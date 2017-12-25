@@ -16,4 +16,16 @@ RSpec.describe Player, type: :model do
 
   end
 
+  describe "associations" do
+    it "belongs to a Team" do
+      player = create(:player)
+      team = create(:team)
+
+      player.update(team: team)
+
+      expect(player.team.mascot).to eq(team.mascot)
+    end
+
+  end
+
 end
