@@ -16,6 +16,13 @@ RSpec.describe Team, type: :model do
   end
 
   describe "associations" do
+    it "has many players" do
+      team = create(:team)
 
+      team.players.create(first_name: "Jerry", last_name: "Rice")
+      team.players.create(first_name: "Dallas", last_name: "Clark")
+
+      expect(team.players.size).to eq(2)
+    end
   end
 end
